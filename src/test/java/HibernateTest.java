@@ -16,20 +16,12 @@ public class HibernateTest {
 
 //        Task 1!
 //        Subject science = em.find(Subject.class, 2);
-//        TypedQuery<Student> studentTypedQuery = em.createQuery("select student from Student student, Tutor tutor join tutor.subjectsToTeach subject where subject = :subject and student member of tutor.teachingGroup", Student.class);
-//        studentTypedQuery.setParameter("subject", science);
-//        List<Student> students = studentTypedQuery.getResultList();
+//        Query query = em.createQuery("select tutor.teachingGroup from Tutor tutor where :subject member of tutor.subjectsToTeach");
+//        query.setParameter("subject", science);
+//        List<Student> students = query.getResultList();
 //        for (Student student : students) {
 //            System.out.println(student);
 //        }
-
-        Subject science = em.find(Subject.class, 2);
-        TypedQuery<Tutor> query = em.createQuery("from Tutor tutor where :subject member of tutor.subjectsToTeach", Tutor.class);
-        query.setParameter("subject", science);
-        List<Tutor> tutors = query.getResultList();
-        for (Tutor tutor : tutors) {
-            System.out.println(tutor.getTeachingGroup());
-        }
 
 //        Task 2!
 //        List<Object[]> studentAndTutorName = em.createQuery("select student.name, tutor.name from Tutor tutor join tutor.teachingGroup student").getResultList();
